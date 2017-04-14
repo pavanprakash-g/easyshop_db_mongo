@@ -1,1 +1,2 @@
-# easyshop_db_mongo
+# easyshop_db
+Server side using spring boot
