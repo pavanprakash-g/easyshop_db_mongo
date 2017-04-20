@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface CardRepository extends MongoRepository<CardModel, String> {
     List<CardModel> findByCustId(long custId);
+    CardModel findByCardId(long cardId);
 }

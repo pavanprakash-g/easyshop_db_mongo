@@ -83,9 +83,6 @@ public class EasyShopUtil {
         Map<Integer, Map<String, Object>> cartList = new HashMap();
         List<Map<String, Object>> finalList= new ArrayList<>();
         int itemId;
-        //Aggregation aggregation = Aggregation.newAggregation(group("itemId").count().as("itemCount"),project("itemCount").and("itemId").previousOperation());
-        //AggregationResults<CartInfoModel> cartInfoModelAggregationResults = mongoTemplate.aggregate(aggregation,CartModel.class,CartInfoModel.class);
-        //List<CartInfoModel> cartInfoModelList = cartInfoModelAggregationResults.getMappedResults();
         List<CartModel> cartModelList = cartRepository.findByCustId(custId);
         for(CartModel cartModel: cartModelList){
             Map<String, Object> cart = new HashMap<>();
