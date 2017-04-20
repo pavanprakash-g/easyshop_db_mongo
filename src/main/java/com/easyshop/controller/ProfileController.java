@@ -5,6 +5,7 @@ import com.easyshop.model.UserModel;
 import com.easyshop.model.CardModel;
 import com.easyshop.repository.AddressRepository;
 import com.easyshop.repository.CardRepository;
+import com.easyshop.repository.SequenceRepository;
 import com.easyshop.repository.UserRepository;
 import com.easyshop.util.EasyShopUtil;
 import com.easyshop.util.ProfileUtil;
@@ -37,6 +38,9 @@ public class ProfileController {
 
     @Autowired
     CardRepository cardRepository;
+
+    @Autowired
+    SequenceRepository sequenceRepository;
 
     @RequestMapping(value = "/custDetails", method = GET, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity getCustomerDetails(HttpServletRequest request, @RequestParam(value= "id", required = false, defaultValue ="0" ) Long id){
@@ -83,6 +87,7 @@ public class ProfileController {
         if(!EasyShopUtil.isValidCustomer(userRepository, request)){
             return ResponseEntity.badRequest().body("Invalid Auth Token");
         }
+        addressModel.setAddressId(EasyShopUtil.getMaxId("card","cardId",sequenceRepository));
         addressModel = addressRepository.save(addressModel);
         return ResponseEntity.ok(addressModel);
     }
@@ -114,6 +119,7 @@ public class ProfileController {
         if(!EasyShopUtil.isValidCustomer(userRepository, request)){
             return ResponseEntity.badRequest().body("Invalid Auth Token");
         }
+        cardModel.setCardId(EasyShopUtil.getMaxId("card","cardId",sequenceRepository));
         cardModel = cardRepository.save(cardModel);
         return ResponseEntity.ok(cardModel);
     }

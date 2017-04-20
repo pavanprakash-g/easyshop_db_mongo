@@ -44,6 +44,19 @@ db.sequence.insert({
 });
 
 db.sequence.insert({
+    tableName: "card",
+    columnName: "cardId",
+    seqVal: 1
+});
+
+db.sequence.insert({
+    tableName: "address",
+    columnName: "addressId",
+    seqVal: 1
+});
+
+
+db.sequence.insert({
     tableName: "order_hdr",
     columnName: "orderId",
     seqVal: 2
