@@ -101,6 +101,16 @@ db.tax_info.insert({
     taxPercentage: 10
 });
 
+db.createCollection("message")
+db.message.insert({
+    messageId: 1,
+    custId: 2,
+    messageContent: "java.lang.Exception: Stock is not there for Cricket ball.  Order will be created when the stock is available.",
+    isRead: false,
+    messageTime: '2017-04-21'
+});
+
+
 db.createCollection("card")
 db.card.insert({
     cardId: 1,

@@ -34,8 +34,7 @@ public class MessageModel {
     private boolean isRead;
 
     @NotNull
-    @DateTimeFormat
-    private Date messageTime;
+    private String messageTime;
 
     public MessageModel(){}
 }
